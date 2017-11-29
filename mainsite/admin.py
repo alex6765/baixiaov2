@@ -16,6 +16,14 @@ admin.site.register(Benke, BenkeAdmin)
 
 
 class ShuoshiAdmin(admin.ModelAdmin):
-    list_display = ('id', 'zhongwen', 'jigou', 'gpa')
+    list_display = ('id', 'zhongwen', 'jigou', 'gpa', 'tofel', 'ielts', 'gre', 'gmat')
+    fieldsets = [
+        ('学校信息', {'fields':['liuxue_leixing', 'offer_huoqu', 'tiaojian', 'guojia', 'zhongwen', 'xueli', 'xuezhi', 'jiangxuejin', 'zhuanye']}),
+        ('代理信息', {'fields':['jigou', 'jigou_city', 'url']}),
+        ('学员信息', {'fields':['chengshi', 'zhuanye_ch', 'xuexiao', 'xuexiaoleibie', 'xueli_leibie', 'xueli_chengdu',
+                            'gpa', 'ielts', 'tofel', 'gre', 'gmat']}),
+    ]
+    list_filter = ('guojia', 'zhuanye', 'zhuanye_ch', 'xuezhi', 'jigou', 'chengshi', 'xuexiaoleibie', 'xueli_leibie', 'xueli_chengdu')
+
 
 admin.site.register(Shuoshi, ShuoshiAdmin)
